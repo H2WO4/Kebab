@@ -1,5 +1,4 @@
 using Kebab.Enums;
-using Kebab.Models;
 
 namespace Kebab;
 
@@ -7,13 +6,11 @@ public class Program
 {
 	static int Main()
 	{
-		var ingredients = new[] { Viandes.Boeuf };
 		var kebab = new Models.Kebab();
 
-		kebab.AddViande(Viandes.Agneau);
-		kebab.AddCrudite(Crudites.Salade);
-		kebab.AddCrudite(Crudites.Tomate);
-		kebab.AddCrudite(Crudites.Oignon);
+		kebab.AddIngredient(new Beef());
+		kebab.AddIngredient(new Salad());
+		kebab.AddIngredient(new Tomato());
 
 		kebab.ShowRecipe();
 
@@ -32,23 +29,7 @@ public class Program
 		if (int.TryParse(choix, out choixIngre))
 		{
 
-			if (choixIngre == 1)
-			{
-				foreach (Viandes Viande in Enum.GetValues(typeof(Viandes)))
-				{
-					Console.WriteLine($"{(int)Viande} : {Viande.ToString()}");
-				}
-			}
-			else if (choixIngre == 2) {
-				foreach (Crudites Crudite in Enum.GetValues(typeof(Crudites)))
-				{
-					Console.WriteLine($"{(int)Crudite} : {Crudite.ToString()}");
-				}
-			}
-			else
-			{
-				Console.WriteLine("Mauvais choix");
-			}
+			// TO REDO
 		}
 	}
 }
