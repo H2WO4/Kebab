@@ -14,4 +14,14 @@ public class KebabTest {
 
 		Assert.Equal(4, kebab.Ingredients.Count);
 	}
+
+	[Fact]
+	public void TestOignons() {
+		var kebab = new Models.Kebab();
+		kebab.AddIngredient(new Oignon());
+
+		kebab.RemoveOignons();
+
+		Assert.Equal(0, kebab.Ingredients.Count);
+	}
 }
