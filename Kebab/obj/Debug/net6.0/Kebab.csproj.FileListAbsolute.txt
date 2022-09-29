@@ -1,0 +1,5 @@
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.csproj.AssemblyReference.cache
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.GeneratedMSBuildEditorConfig.editorconfig
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.AssemblyInfoInputs.cache
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.AssemblyInfo.cs
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.csproj.CoreCompileInputs.cache
