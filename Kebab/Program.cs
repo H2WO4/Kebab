@@ -1,4 +1,4 @@
-using Kebab.Enums;
+using Kebab.Models.Ingredients;
 
 namespace Kebab;
 
@@ -6,11 +6,21 @@ public class Program
 {
 	static int Main()
 	{
-		var kebab = new Models.Kebab();
+		var kebab = NewKebab();
 
-		kebab.AddIngredient(new Beef());
-		kebab.AddIngredient(new Salad());
-		kebab.AddIngredient(new Tomato());
+		Console.WriteLine("Voulez-vous doubler le fromage ? (O/N)");
+		var doubleCheese = Console.ReadLine() ?? "";
+		if (doubleCheese.ToLower() == "o")
+		{
+			kebab.DoubleCheese();
+		}
+
+		Console.WriteLine("Voulez-vous retirer les oignons ? (O/N)");
+		var removeOignons = Console.ReadLine() ?? "";
+		if (removeOignons.ToLower() == "o")
+		{
+			kebab.RemoveOignons();
+		}
 
 		kebab.ShowRecipe();
 
@@ -22,73 +32,51 @@ public class Program
 	{
 		Console.WriteLine("Que voulez vous dans le kebab ?");
 
-        var kebab = new Models.Kebab();
-        int choixIngre = -1;
+		var kebab = new Models.Kebab();
+
+		Ingredient[] possibleIngredients = AppDomain.CurrentDomain.GetAssemblies()
+				.SelectMany(domainAssembly => domainAssembly.GetTypes())
+				.Where(type => type.IsSubclassOf(typeof(Ingredient)))
+				.Select(type => Activator.CreateInstance(type) as Ingredient ?? throw new Exception() ?? throw new Exception()).ToArray() ?? throw new Exception();
+
+		foreach (var ingredient_ in possibleIngredients)
+		{
+			Console.WriteLine($"{Array.IndexOf(possibleIngredients, ingredient_)} - {ingredient_}");
+		}
+
+		Console.WriteLine();
+		Console.WriteLine("Dite \"Fini\" pour terminer la creation de votre kebab");
 
 		while (true)
 		{
-			Console.WriteLine("1 : Viande, 2 : Crudité\n0 : Finir creation du kebab");
-			var choix = Console.ReadLine();
+			var choix = Console.ReadLine() ?? "";
 
-			if (int.TryParse(choix, out choixIngre))
+			var ingredient = possibleIngredients.SingleOrDefault(ingredient => ingredient?.Name.ToLower() == choix.ToLower(), null);
+
+			if (ingredient != null)
 			{
-				if (choixIngre == 0)
-					break;
-				if (choixIngre == 1)
-				{
-					var viande = AskViandes();
-					if (viande != null)
-						kebab.AddViande(viande.Value);
-					else
-						Console.WriteLine("Mauvais choix");
+				Console.WriteLine("Combien ?");
+				var quantite = Console.ReadLine();
 
-				}
-				else if (choixIngre == 2)
+				while (true)
 				{
-					var crudite = AskCrudites();
-					if (crudite != null)
-						kebab.AddCrudite(crudite.Value);
+					if (int.TryParse(quantite, out var quantiteInt))
+					{
+						for (int i = 0; i < quantiteInt; i++)
+							kebab.AddIngredient(ingredient);
+
+						break;
+					}
 					else
-						Console.WriteLine("Mauvais choix");
-				}
-				else
-				{
-					Console.WriteLine("Mauvais choix");
+						Console.WriteLine("Entré un chiffre");
 				}
 			}
+			else if (choix.ToLower() == "fini")
+				break;
+			else
+				Console.WriteLine("Mauvais choix");
 		}
 
 		return kebab;
-
-    }
-
-	static Crudites? AskCrudites()
-    {
-        foreach (Crudites crudite in Enum.GetValues(typeof(Crudites)))
-        {
-            Console.WriteLine($"{(int)crudite} : {crudite}");
-        }
-
-		var choix = Console.ReadLine();
-
-		if (int.TryParse(choix, out var crud))
-			return (Crudites)crud;
-		else
-			return null;
-    }
-
-    static Viandes? AskViandes()
-    {
-        foreach (Viandes viande in Enum.GetValues(typeof(Viandes)))
-        {
-            Console.WriteLine($"{(int)viande} : {viande}");
-        }
-
-        var choix = Console.ReadLine();
-
-        if (int.TryParse(choix, out var crud))
-            return (Viandes)crud;
-        else
-            return null;
-    }
+	}
 }

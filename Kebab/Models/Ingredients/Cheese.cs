@@ -1,4 +1,4 @@
-namespace Kebab.Enums;
+namespace Kebab.Models.Ingredients;
 
 public class Cheese : Ingredient
 {
