@@ -3,3 +3,13 @@
 /home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.AssemblyInfoInputs.cache
 /home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.AssemblyInfo.cs
 /home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.csproj.CoreCompileInputs.cache
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.dll
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/refint/Kebab.dll
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.pdb
+/home/arthur/GitHub/Kebab/Kebab/bin/Debug/net6.0/Kebab
+/home/arthur/GitHub/Kebab/Kebab/bin/Debug/net6.0/Kebab.deps.json
+/home/arthur/GitHub/Kebab/Kebab/bin/Debug/net6.0/Kebab.runtimeconfig.json
+/home/arthur/GitHub/Kebab/Kebab/bin/Debug/net6.0/Kebab.dll
+/home/arthur/GitHub/Kebab/Kebab/bin/Debug/net6.0/Kebab.pdb
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/Kebab.genruntimeconfig.cache
+/home/arthur/GitHub/Kebab/Kebab/obj/Debug/net6.0/ref/Kebab.dll
